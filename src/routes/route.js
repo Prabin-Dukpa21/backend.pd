@@ -1,5 +1,7 @@
 const express = require('express');
 const abc = require('../introduction/intro')
+const underscore = require('underscore')
+
 const router = express.Router();
 
 router.get('/test-me', function (req, res) {
@@ -9,6 +11,57 @@ router.get('/test-me', function (req, res) {
 
     res.send('My second ever api!')
 });
+
+
+router.get("/films", function(req, res){
+    const films = [ {
+        "id": 1,
+        "name": "The Shining"
+       }, {
+        "id": 2,
+        "name": "Incendies"
+       }, {
+        "id": 3,
+        "name": "Rang de Basanti"
+       }, {
+        "id": 4,
+        "name": "Finding Nemo"
+       }]
+       //send all the films
+      res.send(films) 
+})
+
+router.get("/films/:filmId", function(req, res){
+    const films = [ {
+        "id": 1,
+        "name": "The Shining"
+       }, {
+        "id": 2,
+        "name": "Incendies"
+       }, {
+        "id": 3,
+        "name": "Rang de Basanti"
+       }, {
+        "id": 4,
+        "name": "Finding Nemo"
+       }]
+
+       let filmId = req.params.filmId
+
+       //iterate all the films
+       //search for a film whose id matches with the id recevied in request
+       for(let i = 0; i < films.length; i++){
+           let film = films[i]
+           if(film.id == filmId) {
+               //if there is a match return the response from here
+               return res.send(film)
+           }
+       }
+
+       //if there is no match give an error response
+       res.send("The film id doesn't match any movie")
+})
+
 
 router.get('/students', function (req, res){
     let students = ['Sabiha', 'Neha', 'Akash']
