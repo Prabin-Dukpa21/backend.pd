@@ -133,25 +133,44 @@ router.post('/players', function (req, res) {
 
 
 
+//-----------post api assingment 2-------
+
+
+let person  =[{
+    name :"PK",
+    age:10,
+    votingstatus:false
+},{
+    name :"AK",
+    age:20,
+    votingstatus:false
+},{
+    name :"AA",
+    age:70,
+    votingstatus:false
+},{
+    name :"SC",
+    age:5,
+    votingstatus:false
+},{
+    name :"HQ",
+    age:40,
+    votingstatus:false
+}];
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+router.post('/person',function(req,res){
+    let inputAge =req.query.votingAge;
+   person.map(per =>(per.age > inputAge)?per.votingstatus=true:per.votingstatus);
+   
+   let final =person.filter(pson =>{if(pson.votingstatus==true){return pson.name}});
+   
+   res.send({date : final});
+   
+   })
+   
 
 
 
