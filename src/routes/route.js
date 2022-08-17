@@ -16,4 +16,14 @@ router.post("/createBook", BookController.createBook  )
 
 router.get("/getBooksData", BookController.getBooksData)
 
+//----new mongo assignment 2------
+router.get("/priceDetails", BookController.priceDetails)
+router.get("/allBooksList", BookController.allBooksList)
+router.get("/yearDetails", BookController.yearDetails)
+router.get("/particularBooks", BookController.particularBooks)
+router.get("/randomBooks", BookController.randomBooks)
+
+
+
+
 module.exports = router;
